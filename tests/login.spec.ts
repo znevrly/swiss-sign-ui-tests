@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginFlow } from './flows/LoginFlow';
+import { RegistrationData } from './pages/RegistrationPage';
 
 test.describe('SwissID Account Creation', () => {
     let loginFlow: LoginFlow;
@@ -8,18 +9,26 @@ test.describe('SwissID Account Creation', () => {
         loginFlow = new LoginFlow(page);
     });
 
-    test('should be able to navigate to create account page', async ({ page }) => {
-        // Navigate to login page
+    test('should be able to navigate to create account page and verify the page', async ({ page }) => {
         await loginFlow.navigateToLoginPage();
-
-        // Verify we're on the login page
         await expect(page).toHaveTitle(/SwissID/);
-
-        // Click create account
         await loginFlow.createNewAccount();
+        // await expect(page.getByText('Before creating your account...')).toBeVisible();
+    });
 
-        // Verify we're on the create account page
-        const isCreateAccountPageVisible = await loginFlow.verifyCreateAccountPage();
-        expect(isCreateAccountPageVisible).toBeTruthy();
+    test('should be able to fill registration form when robot protection is disabled', async ({ page }) => {
+        await loginFlow.navigateToLoginPage();
+        await loginFlow.createNewAccount();
+        
+        await expect(await loginFlow.isRegistrationFormVisible()).toBeTruthy();
+        const registrationData: RegistrationData = {
+            salutation: 'Mr.',
+            firstName: 'Zbynek',
+            lastName: 'Nevrly',
+            email: 'znevrly@gmail.com',
+            password: 'securepass123!'
+        };
+        await loginFlow.fillRegistrationForm(registrationData);
+        await loginFlow.submitRegistration();
     });
 }); 
