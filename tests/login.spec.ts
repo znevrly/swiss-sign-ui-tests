@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginFlow } from './flows/LoginFlow';
-import { RegistrationData } from './pages/RegistrationPage';
+import { RegistrationData, Salutation } from './pages/RegistrationPage';
 
 test.describe('SwissID Account Creation', () => {
     let loginFlow: LoginFlow;
@@ -22,7 +22,7 @@ test.describe('SwissID Account Creation', () => {
         
         await expect(await loginFlow.isRegistrationFormVisible()).toBeTruthy();
         const registrationData: RegistrationData = {
-            salutation: 'Mr.',
+            salutation: Salutation.MR,
             firstName: 'Zbynek',
             lastName: 'Nevrly',
             email: 'znevrly@gmail.com',

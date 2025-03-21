@@ -1,11 +1,11 @@
-# Swiss Sign UI Tests
+# SwissSign UI Tests
 
-This repository contains automated UI tests for the Swiss Sign application using Playwright.
+This repository contains automated UI tests.
 
 ## Prerequisites
 
-- Node.js (version specified in package.json)
-- npm (Node Package Manager)
+- Node.js
+- npm/yarn
 
 ## Installation
 
@@ -24,43 +24,39 @@ npm install
 
 ```
 swiss-sign-ui-tests/
-├── tests/                    # Test files
-│   ├── login.spec.ts        # Login test scenarios
+├── tests/                    
+│   ├── login.spec.ts        # test scenarios
 │   ├── pages/               # Page object models
-│   └── flows/               # Test flows and scenarios
-├── playwright.config.ts     # Playwright configuration
-└── package.json            # Project dependencies and scripts
+│   └── flows/               # flows 
 ```
 
 ## Running Tests
 
-To run the tests, use the following command:
-
+Run tests in headless mode:
 ```bash
 npx playwright test
 ```
 
+Run tests in UI mode (with Playwright's UI):
+```bash
+npx playwright test --ui
+```
+
+Run tests in debug mode:
+```bash
+npx playwright test --debug
+```
+
 ## Test Reports
 
-After running the tests, you can find:
-- Test results in the `test-results/` directory
-- Playwright reports in the `playwright-report/` directory
+After running the tests, you can find two types of reports:
 
-## Development
+1. **Test Results** (`test-results/`):
+   - Raw test execution data
+   - Screenshots from test failures
+   - Test artifacts (traces, videos)
+   - Detailed technical information for debugging
 
-This project uses:
-- Playwright for end-to-end testing
-- TypeScript for type safety
-- Page Object Model pattern for better test organization
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the ISC License. 
+2. **Playwright Reports** (`playwright-report/`):
+   - HTML report - visual representation of test steps
+   - Test statistics and execution times

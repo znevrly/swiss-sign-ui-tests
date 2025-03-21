@@ -1,10 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
+const { defineConfig, devices } = require('@playwright/test');
+const dotenv = require('dotenv');
+const path = require('path');
 
-import dotenv from 'dotenv';
-import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-export default defineConfig({
+module.exports = defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
