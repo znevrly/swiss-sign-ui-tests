@@ -1,6 +1,6 @@
 # SwissSign UI Tests
 
-This repository contains automated UI tests.
+This repository contains UI tests.
 
 ## Prerequisites
 
@@ -9,30 +9,14 @@ This repository contains automated UI tests.
 
 ## Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/znevrly/swiss-sign-ui-tests.git
-cd swiss-sign-ui-tests
-```
-
-2. Install dependencies:
+Install dependencies
 ```bash
 npm install
 ```
 
-## Project Structure
-
-```
-swiss-sign-ui-tests/
-├── tests/                    
-│   ├── login.spec.ts        # test scenarios
-│   ├── pages/               # Page object models
-│   └── flows/               # flows 
-```
-
 ## Running Tests
 
-Run tests in headless mode:
+Run all tests in headless mode:
 ```bash
 npx playwright test
 ```
@@ -45,6 +29,16 @@ npx playwright test --ui
 Run tests in debug mode:
 ```bash
 npx playwright test --debug
+```
+
+Run specific test by title:
+```bash
+npx playwright test -g "should be able to fill registration form"
+```
+
+Run specific test file:
+```bash
+npx playwright test tests/login.spec.ts
 ```
 
 ## Test Reports

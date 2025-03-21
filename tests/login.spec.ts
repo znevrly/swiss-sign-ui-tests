@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { LoginFlow } from './flows/LoginFlow';
-import { RegistrationData, Salutation } from './pages/RegistrationPage';
+import { LoginFlow } from '../flows/LoginFlow';
+import { RegistrationData, Salutation } from '../pages/RegistrationPage';
 
 test.describe('SwissID Account Creation', () => {
     let loginFlow: LoginFlow;
