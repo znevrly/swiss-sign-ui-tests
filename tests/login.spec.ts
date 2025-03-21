@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { LoginFlow } from '../flows/LoginFlow';
 import { RegistrationData, Salutation } from '../pages/RegistrationPage';
+import dotenv from 'dotenv';
+dotenv.config();
 
 test.describe('SwissID Account Creation', () => {
     let loginFlow: LoginFlow;
@@ -26,7 +28,7 @@ test.describe('SwissID Account Creation', () => {
             firstName: 'Zbynek',
             lastName: 'Nevrly',
             email: 'znevrly@gmail.com',
-            password: 'securepass123!'
+            password: process.env.TEST_USER_PASSWORD || 'default_password'
         };
         await loginFlow.fillRegistrationForm(registrationData);
         await loginFlow.submitRegistration();

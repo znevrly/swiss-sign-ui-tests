@@ -14,6 +14,17 @@ Install dependencies
 npm install
 ```
 
+## Configuration
+
+Copy `.env.example` to `.env` and fill in the required values:
+
+```bash
+cp .env.example .env
+```
+
+Required environment variables:
+- `TEST_USER_PASSWORD`: Password to use for test accounts
+
 ## Running Tests
 
 Run all tests in headless mode:
